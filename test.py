@@ -11,16 +11,6 @@ user = cred.columns[0]
 password = cred.columns[1]
 
 
-def send_mail(user, pas):
-    email = input("Enter your email address: ")
-    text = input("Enter text: ")
-    key = input("Enter key: ").upper()
-    encr, key = vigenere(text, key)
-    encr += ',' + key
-    
-
-
-
 def vigenere(text, key):
     key_ord = []
     for a in key:
@@ -41,5 +31,22 @@ def vigenere(text, key):
             final += chr((ord(i) - 97 + key_ord[(j % len(key))] - 65) % 26 + 97)
             j = j + 1
     return final, key
+
+
+def send_mail(user, pas):
+    email = input("Enter your email address: ")
+    text = input("Enter text: ")
+    key = input("Enter key: ").upper()
+    encr, key = vigenere(text, key)
+    encr += ',' + key
+    s = smtplib.SMTP('smtp.gmail.com', 587)
+    s.starttls()
+    s.login(user, pas)
+    s.sendmail(user, email, encr)
+    s.quit()
+
+
+
+
 
 send_mail(user, password)
