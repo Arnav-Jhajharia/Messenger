@@ -5,10 +5,43 @@ import smtplib
 # email = input("Enter your email address: ")
 # text = input("Enter text: ")
 # sender = "jhajhariaarnav@gmail.com"
+user = 0
+password = 0
+inp = 2
+while True:
+    if inp == 1:
+        cred = pd.read_csv("credentials.txt")
+        user = cred.columns[0]
+        password = cred.columns[1]
+        print("Retrieved.")
+        break
+    elif inp == 0:
+        user = input("enter email")
+        password = input("enter password")
+        break
+    inp = int(input("Enter 0 to enter the credentials here and 1, to retrieve it from a file. "))
+    
 
-cred = pd.read_csv("credentials.txt")
-user = cred.columns[0]
-password = cred.columns[1]
+def idontknow(text, key):
+    key_ord = []
+    for a in key:
+        key_ord.append(ord(a))
+    # print(key_ord)
+    b = 0
+    j = 0
+    final = ""
+    for i in text:
+        b = ord(i)
+        # print(i)
+        if (b < 65 or b > 90) and (b < 97 or b > 122):
+            final += i
+        if (b >= 65 and b <= 90):
+            final += chr((ord(i) - 65 - key_ord[(j % len(key))] - 65) % 26 + 65)
+            j = j + 1
+        if (b >= 97 and b <= 122):
+            final += chr((ord(i) - 97 - key_ord[(j % len(key))] - 65) % 26 + 97)
+            j = j + 1
+    return final
 
 
 def vigenere(text, key):
