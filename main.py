@@ -33,7 +33,6 @@ key = cred.columns[2]
 # inp = input("Enter how you want to give your credentials: ").lower()
 # spl = inp.split(" ")
 cred2 = pd.read_csv("recipients.txt")
-
 def idontknow(text, key):
     key_ord = []
     for a in key.upper():

@@ -47,16 +47,20 @@ o = vigenere(input("Enter your default message: Press enter for blank: "), key)
 f = open("message.txt", "w")
 f.write(o)
 f.close()
-email = ""
+
 print("Enter reciever's email address for later access(if needed), enter exit when you're done: ")
+a = input()
+email = a
 while True:
     a = input()
     if a.lower() == "exit": 
         break
-    email += a + ","
+    email +=  "," + a
     f = open("recipients.txt", "w").write(email)
-
-print("                 Now type python main.py to send / receive the mail safely")
+print("List of what you can do")
+print("                 Type python main.py to send / receive the mail safely")
+print("                 Type python edit.py to edit details.")
 print("                 Type notepad credentials.txt to see your credentials.")
 print("                 Type notepad message.txt to see your default message")
+print("                 Type notepad recipients.txt to see your default recipients")
 print('                 All your details are only stored in encrypted form in your local computer.')

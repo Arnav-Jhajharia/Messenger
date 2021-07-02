@@ -53,7 +53,7 @@ while True:
     elif a == "recep":
         email = ""
         while True:
-            a = input("Enter reciever's email address for later access(if needed), enter exit when you're done: ")
+            a = input("Enter: ")
             if a.lower() == "exit": 
                 break
             email += a + ","
