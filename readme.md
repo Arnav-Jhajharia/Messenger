@@ -23,6 +23,7 @@ python edit.py
 ```
 python main.py
 ```
+- Note - Enter gmail credentials *only*
 - Tips and tricks
     - All your details are stored in your local computer in credentials.txt, message.txt and recipients.txt
     - Enter 
@@ -36,7 +37,7 @@ python main.py
 
     - You can send emails in encrypted form and decrypt sent emails(with the same messenger). 
     - To send non-encrypted emails, enter "a" when prompted for key
-    - Note - Enter gmail credentials *only*
+    
 
 
 
