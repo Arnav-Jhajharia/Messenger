@@ -36,6 +36,7 @@ python main.py
 
     - You can send emails in encrypted form and decrypt sent emails(with the same messenger). 
     - To send non-encrypted emails, enter "a" when prompted for key
+    - Note - Enter gmail credentials *only*
 
 
 
