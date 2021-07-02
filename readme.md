@@ -1,6 +1,9 @@
+# CLI Messenger for transfer of messages in encrypted format
+- End-to-end file transfer and viewing. 
+- Gmail used as agent. 
+- 
 
-
-## Steps needed to for setup
+## Steps needed  for setup
 1. Go [here](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4OB0tZ7ZJARqV-_kI_ePvVpf-MQGOxWf7Sol2BjdsfWBNzIMPoavfdbUY_zGwV17bhPyJTLKJKYE5VrU2egh9F4zBxP-A) and turn on Less Secure Apps.
 2. Go [here](https://mail.google.com/mail/u/0/?tab=rm&ogbl#settings/fwdandpop) and "Enable IMAP"
 3. Download the repository, and make sure you have python installed.
