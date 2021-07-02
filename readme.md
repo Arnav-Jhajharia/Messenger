@@ -10,3 +10,5 @@ python setup.py
 ```
 python main.py
 ```
+
+Version 1.0
