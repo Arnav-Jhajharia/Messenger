@@ -54,7 +54,7 @@ while True:
     if a.lower() == "exit": 
         break
     email += a + ","
-    f = open("reciepients.txt", "w").write(email)
+    f = open("recipients.txt", "w").write(email)
 
 print("                 Now type python main.py to send / receive the mail safely")
 print("                 Type notepad credentials.txt to see your credentials.")
