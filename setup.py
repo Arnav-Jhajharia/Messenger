@@ -46,6 +46,16 @@ while True:
 o = vigenere(input("Enter your default message: Press enter for blank: "), key)
 f = open("message.txt", "w")
 f.write(o)
+f.close()
+email = ""
+print("Enter reciever's email address for later access(if needed), enter exit when you're done: ")
+while True:
+    a = input()
+    if a.lower() == "exit": 
+        break
+    email += a + ","
+    f = open("reciepients.txt", "w").write(email)
+
 print("                 Now type python main.py to send / receive the mail safely")
 print("                 Type notepad credentials.txt to see your credentials.")
 print("                 Type notepad message.txt to see your default message")

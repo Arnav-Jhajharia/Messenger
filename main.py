@@ -30,32 +30,9 @@ cred = pd.read_csv("credentials.txt")
 user = cred.columns[0]
 password = cred.columns[1]
 key = cred.columns[2]
-inp = input("Enter how you want to give your credentials: ").lower()
-spl = inp.split(" ")
-
-while True:
-    if "retrieve" in spl or "get" in spl or "file" in spl:
-        
-        print("Retrieved.")
-        break
-    elif "enter" in spl or "here" in spl or "type" in spl:
-        user = input("Enter email: ")
-        password = input("Enter password: ")
-        key = input("Enter key: ")
-        a = input("Do you want to change the recorded credentials? ")
-        if "Yes" in a or a == "Y" or a == "Yep" or a == "Mmhmm" or "Ha" in a:
-            user, key = vigenere(user, key)
-            password, key = vigenere(password, key)
-            f = open("credentials.txt", "w")
-            f.write(user + "," + password + "," + key)
-            f.close()
-            print("Changes successfully made!")
-        print("Recorded. ")
-        break
-    else:
-        inp = input("Didn't get you, explain in better terms perhaps?: ").lower()
-        spl = inp.split(" ")
-
+# inp = input("Enter how you want to give your credentials: ").lower()
+# spl = inp.split(" ")
+cred2 = pd.read_csv("recipients.txt")
 
 def idontknow(text, key):
     key_ord = []
@@ -82,43 +59,56 @@ def idontknow(text, key):
 
 
 def send_mail(user, pas):
-    aaa = input("Enter 1 to send it to multiple participants, anything else for one: ")
-    email = ""
-    if aaa == "1":
-        print("Enter the emails, press enter to exit")
-        a = "-"
-        email = []
-        while a != "":
-            a = input()
-            email += [a]            
-    else:
-        email = input("Enter the reciever's email address: ")
-    
-    b = int(input("Enter 0 if you want to send default message and 1 to read from here: "))
-    if b == 1:
+    email = []  
+    print("These are you default recipients")
+    qw = -1
+    for key, value in cred2.iteritems():
+        qw += 1
+        print(str(qw) + ".", key)
+    qa = input("To send to any one of them, press 1: ")
+    if qa == "1":
+        print("Enter the number associated with the participants, press exit when you're done. ")
+        while True:
+            u = input()
+            if u == "exit":
+                break
+            email += [cred2.columns[int(u)]]
+            
+
+    print("Enter other emails, press enter to exit")
+    a = "-"
+    while a != "":
+        a = input()
+
+        if "@" in a:
+            email += [a]     
+       
+    b = (input("Enter 0 if you want to send default message and 1 to read from here: "))
+    if b == "1":
         text = input("Enter text: ")
         
 
-        c = int(input("Do you want this to be your default message: Press 1 for yes and anything else for no:"))
-        if c == 1:
+        c = (input("Do you want this to be your default message: Press 1 for yes and anything else for no:"))
+        if c == "1":
             hi, o = vigenere(text, cred.columns[2])
             f = open("message.txt", "w")
             f.write(hi)
             f.close()
             
-    elif b == 0:
+    elif b == "0":
         text = open("message.txt", "r").read()
         text = idontknow(text, cred.columns[2])
     key = input("Enter key(enter a if you want to send the code in non-encrytped form): ").upper()
     encr, key = vigenere(text, key)
     if key != "A":
         encr += ',' + key
+    
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
     s.login(user, pas)
     s.sendmail(user, email, encr)
     s.quit()
-    
+
 
 
 user = idontknow(user, key)
@@ -140,16 +130,19 @@ def fetch_mail(u, p):
   for part in msg.walk():
      b = part.get_payload()
      body = b.rstrip("\r\n").split(",")
-     print(body)
-     print(body[0])
-     decr = idontknow(body[0], body[1])
-     print("The decrypted message was: " + decr)
+     try: 
+        decr = idontknow(body[0], body[1])
+        print("The decrypted message was: " +decr)
+     except IndexError:
+        decr = body[0]
+        print("The message was" + decr)
+    
 
 
 action = int(input("Press 1 to send, 0 to receive: "))
 if action == 1:
     send_mail(user, password)
-    print("Email Successfully sent in encryped form")
+    print("Email Successfully sent in encrypted form")
 elif action == 0:
     fetch_mail(user, password)
 
