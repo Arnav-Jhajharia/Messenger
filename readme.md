@@ -25,11 +25,13 @@ python edit.py
 python main.py
 ```
 
-
 - Enter this for image transfer 
 ```
 python image.py
 ```
+
+- Note - Enter gmail credentials *only*
+
 - Tips and tricks
     - All your details are stored in your local computer in credentials.txt, message.txt and recipients.txt
     - Enter 
@@ -43,14 +45,14 @@ python image.py
 
     - You can send emails in encrypted form and decrypt sent emails(with the same messenger). 
     - To send non-encrypted emails, enter "a" when prompted for key
-
-
-
-## Version 1.1
+    
+## Version 1.2
 ### Features 
-- New edit panel
-- Save your recipients
-- Slight redeisgn
+- Added image encryption
+- Minor re-design. 
+
+
+
 
 
 
