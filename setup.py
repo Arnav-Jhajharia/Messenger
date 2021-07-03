@@ -1,3 +1,12 @@
+import os
+
+aaaa = input("Few modules needed for execution..  want to install them? answer in y, n: ").lower()
+if(aaaa.lower() == "y"):
+    os.system("pip install pandas")
+    os.system("pip install matplotlib")
+    os.system("pip install pillow")
+else:
+    print("There might be some execution issues, if the modules are not imported")
 import pandas as pd
 import getpass 
 
@@ -58,7 +67,8 @@ while True:
     email +=  "," + a
     f = open("recipients.txt", "w").write(email)
 print("List of what you can do")
-print("                 Type python main.py to send / receive the mail safely")
+print("                 Type python image.py to send / receive images")
+print("                 Type python main.py to send / receive text messages")
 print("                 Type python edit.py to edit details.")
 print("                 Type notepad credentials.txt to see your credentials.")
 print("                 Type notepad message.txt to see your default message")
