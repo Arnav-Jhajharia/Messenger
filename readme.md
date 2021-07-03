@@ -1,5 +1,5 @@
 # CLI Messenger for transfer of messages in encrypted format
-- End-to-end text transfer and viewing. 
+- End-to-end text/image transfer and viewing. 
 - Gmail used as agent. 
 
 
@@ -19,9 +19,16 @@ python edit.py
 ```
 # Use 
 
-- Enter this 
+
+- Enter this for text transfer 
 ```
 python main.py
+```
+
+
+- Enter this for image transfer 
+```
+python image.py
 ```
 - Tips and tricks
     - All your details are stored in your local computer in credentials.txt, message.txt and recipients.txt

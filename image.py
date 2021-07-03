@@ -72,7 +72,7 @@ def send_mail(user, pas):
     message["From"] = user
     message["To"] = input("Enter recipient's email address: ")
     path = input("Enter image path: ")
-    seed = int(input("Enter seed "))
+    seed = int(input("Enter seed for encryption: "))
     w = input("Enter a message to send with image: ")
     message.set_content(str(seed) + "," + w)
     img = np.array(Image.open(path).convert('L'))
