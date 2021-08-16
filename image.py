@@ -137,7 +137,7 @@ def fetch_mail(u, p):
         
         if bool(fileName):
                 
-            filePath = os.path.join('/Users/jhajh/crypto/8Final/YTSProject/Image/CSV', fileName)
+            filePath = fileName
             if not os.path.isfile(filePath) :
                 fp = open(filePath, 'wb')
                 fp.write(part.get_payload(decode=True))
